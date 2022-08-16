@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08_promise的几个关键问题2</title>
+</head>
+<body>
+<!--
+
+-->
+<script type="text/javascript">
+    const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(100)
+        }, 1000)
+    })
+    p.then(value => {
+            console.log('成功了', value);
+        },
+        reason => {
+            console.log('失败了', reason);
+        }
+    )
+
+</script>
+</body>
+</html>
