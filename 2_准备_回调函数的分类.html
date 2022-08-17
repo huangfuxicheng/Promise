@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_准备_回调函数的分类</title>
+</head>
+<body>
+<script>
+    //前序知识：什么是回调？---我们定义的，我们没有调用，最终执行了。
+    // 1.同步的回调函数：
+    //      理解：立即在主线程上执行，不会放入回调队列中。
+    //      例子：数组遍历相关的回调函数/Promise的executor函数
+    //2.异步的回调函：
+    //      理解：不会立即执行，会放入回调队列中以后执行
+    //      例子：定时器回调/ajax回调/Promise的成功、失败的回调
+    //演示同步的回调函数
+    // let arr = [1,2,3,4,5]
+    // arr.forEach((item)=>{
+    //     console.log(item)
+    // })
+    // console.log('##')
+    //演示异步回调
+    setTimeout(() => {
+        console.log('@')
+    }, 1000)
+    console.log('#')
+</script>
+</body>
+</html>

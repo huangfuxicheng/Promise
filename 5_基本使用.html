@@ -5,24 +5,59 @@
     <title>Title</title>
 </head>
 <body>
+<!--Promise是什么？-->
+<!--1.抽象表达：-->
+<!--(1).Promise是一门新的技术(ES6提出的)-->
+<!--(2).Promise是JS中异步编程的新方案（旧方案是谁？-&#45;&#45;纯回调）-->
+<!--2.具体表达-->
+<!--(1).从语法上来说：Promise是一个内置构造函数-->
+<!--(2).从功能上来说：Promise的实例对象可以用来封装一个异步操作，并可以获取其成功/失败的值-->
 <script>
-    const p = new Promise((resolve, reject)=>{
-        const xhr = new XMLHttpRequest();
+    // 1.重要语法
+    // new Promise(executor)构造函数
+    // Promise.prototype.then方法
+    // 2.基本编码流程
+    //      1.创建Promise的实例对象(pending状态)，传入executor函数
+    //      2.在executor中启动异步任务（定时器、ajax请求）
+    //      3.根据异步任务的结果，做不同处理：
+    //           3.1如果异步任务成功了：
+    //              我们调用resolve(value),让Promise实例对象状态变为成功(fulfilled),同时指定成功的value
+    //           3,2如果异步任务失败了：
+    //              我们调用reject(reason),让Promise实例对象状态变为失败(rejected),同时指定失败的reason
+    //     4.通过then方法为Promise的实例指定成功、失败的回调函数，米获取成功的value、失败的reason
+    //     注意：then方法所指定的：成功的回调、失败的回调，都是异步的回调。
+    // 3.关于状态的注意点：
+    //      1.三个状态：
+    //          pending:未确定的----初始状态
+    //          fu1fi1led:成功的----调用resolve()后的状态
+    //          rejected:失败的----调用reject()后的状态
+    //     2.两种状态改变
+    //          pending ==>fulfilled
+    //          pending ==>rejected
+    //     3.状态只能改变一次！！
+    // 4.一个promise指定多个成功/失败回调函数，都会调用吗？
+    // const p = new Promise((resolve,reject) => {
+    //         resolve(100)
+    // }).then(value => console.log(value),//成功的回调-异步
+    // reason => console.log(reason))//失败的回调-异步
+    // const p = new Promise((resolve,reject)=>{
+        // setTimeout(()=>{
+        //     resolve(100)
+        // },2000)
+        const xhr = new XMLHttpRequest()
         xhr.onreadystatechange =()=>{
             if(xhr.readyState === 4){
-                if(xhr.status >=200 && xhr.status < 300){
-                   resolve(xhr.response)
-                }else {
-                    reject('错误')
+                if(xhr.status === 200){
+                    console.log(xhr.response)
                 }
             }
         }
-        xhr.open("GET","https://api.apiopen.top/api/getImages");
+        xhr.open("GET","https://api.apiopen.top/api/getImages?type=person&page=0&size=10")
         xhr.responseType ='json'
         xhr.send()
-    })
-    p.then(value => console.log(value),
-    reason => console.log(reason))
+    // })
+    // p.then(value => console.log(value),//成功的回调-异步
+    // reason => console.log(reason))//失败的回调-异步
 </script>
 </body>
 </html>
