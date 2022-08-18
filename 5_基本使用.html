@@ -44,20 +44,33 @@
         // setTimeout(()=>{
         //     resolve(100)
         // },2000)
-        const xhr = new XMLHttpRequest()
-        xhr.onreadystatechange =()=>{
-            if(xhr.readyState === 4){
-                if(xhr.status === 200){
-                    console.log(xhr.response)
-                }
-            }
-        }
-        xhr.open("GET","https://api.apiopen.top/api/getImages?type=person&page=0&size=10")
-        xhr.responseType ='json'
-        xhr.send()
+        // const xhr = new XMLHttpRequest()
+        // xhr.onreadystatechange =()=>{
+        //     if(xhr.readyState === 4){
+        //         if(xhr.status === 200){
+        //             console.log(xhr.response)
+        //         }
+        //     }
+        // }
+        // xhr.open("GET","https://api.apiopen.top/api/getImages?type=person&page=0&size=10")
+        // xhr.responseType ='json'
+        // xhr.send()
     // })
     // p.then(value => console.log(value),//成功的回调-异步
     // reason => console.log(reason))//失败的回调-异步
+    // console.log(1);
+    // setTimeout(()=>{
+    //     console.log(2);
+    // },0)
+    // const p = new Promise((resolve, reject)=>{
+    //     console.log(3);
+    //     resolve(1000);
+    //     console.log(4);
+    // })
+    // p.then(
+    //     value => console.log(value)
+    // )
+    // console.log(5);
 </script>
 </body>
 </html>

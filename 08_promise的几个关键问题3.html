@@ -2,13 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>08_promise的几个关键问题2</title>
+    <title>08_promise的几个关键问题3</title>
 </head>
 <body>
 <!--
 
 -->
 <script type="text/javascript">
+//     Promise实例，then()返回的是一个新的Promise实例，它的值利状态泸什么决定？
+// 1,简单表达：由then()所指定的回调函数执行的结果决定
+//     2.详细表达：
+// (I)如果then所指定的回调返回的是非Promise值a:
+//         那么【新Promise实例】状态为：成功(fulfilled),成功的value为a
+//     (2)如果then所指定的回调返回的是一个Promise实例p:
+//         那么【新Promise?实例】的状态、值，都与p一致
+//     (3)如果then所指定的回调抛出异常：
+// 那么【新Promise?实例】状态为rejected,,reason.为抛出的那个异常
     const p = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(100)
