@@ -9,7 +9,7 @@
 
 -->
 <script type="text/javascript">
-//     Promise实例，then()返回的是一个新的Promise实例，它的值利状态泸什么决定？
+//     Promise实例，then()返回的是一个新的Promise实例，它的值利状态由什么决定？
 // 1,简单表达：由then()所指定的回调函数执行的结果决定
 //     2.详细表达：
 // (I)如果then所指定的回调返回的是非Promise值a:
@@ -29,6 +29,9 @@
         reason => {
             console.log('失败了', reason);
         }
+    ).then(
+        value => console.log(value),
+        reason => console.log(reason)
     )
 
 </script>
