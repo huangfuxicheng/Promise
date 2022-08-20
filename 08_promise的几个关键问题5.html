@@ -36,12 +36,11 @@
     sendAjax('https://api.apiopen.top/api/getImages',{page:1,size:10}).then(
         value => {
             console.log(value)
-            return sendAjax('https://api.apiopen.top/api/getImages',{page:1,size:10})
+            return sendAjax('http://jsonplaceholder.typicode.com/posts1',{page:1,size:10})
         },
         reason => {
             console.log(reason)
-            return new Promise(() => {
-            })
+            return new Promise(() => {})
         }
     ).then(
         value =>{
@@ -50,8 +49,15 @@
         } ,
         reason => {
             console.log(reason)
-            return new Promise(() => {
-            })
+            return new Promise(() => {})
+        }
+    ).then(
+        value =>{
+            console.log(value)
+        } ,
+        reason => {
+            console.log(reason)
+            return new Promise(() => {})
         }
     )
 

@@ -34,33 +34,12 @@ promise错误穿透：
             xhr.send()
         })
     }
-    sendAjax('https://api.apiopen.top/api/getImages1',{page:1,size:10}).then(
-        value => {
-            console.log(value)
-            return sendAjax('http://jsonplaceholder.typicode.com/posts1',{page:1,size:10})
-        },
-        // reason => {
-        //     console.log(reason)
-        //     return new Promise(() => {})
-        // }
-    ).then(
-        value =>{
-            console.log(value)
-            return sendAjax('https://api.apiopen.top/api/getImages',{page:1,size:10})
-        },
-        reason => {
-            console.log(2,reason)
-            // return new Promise(() => {})
-        }
-    ).then(
-        value =>{
-            console.log(value)
-        }
-    ).catch(
-        reason => {
-            console.log(1,reason)
-        }
-    )
+    ( ()=>{
+        const x = sendAjax('https://api.apiopen.top/api/getImages',{page:1,size:10})
+        console.log(1,x)
+        const p = sendAjax('https://api.apiopen.top/api/getImages',{page:1,size:10})
+        console.log(2,p)
+    })()
 
 </script>
 </body>
